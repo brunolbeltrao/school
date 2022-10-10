@@ -5,22 +5,22 @@ Port to test 8081
 
 Import this API to Postman:
 
-##To enroll
+## To enroll
 curl --location --request POST 'http://localhost:8081/course/enroll?studentid=1&courseId=6'
 
-##To get students by course
+## To get students by course
 curl --location --request GET 'http://localhost:8081/student/getStudentsByCourse?courseId=1'
 
-##To get students without course
+## To get students without course
 curl --location --request GET 'http://localhost:8081/student/getStudentsWithoutCourse'
 
-##To get Courses without students
+## To get Courses without students
 curl --location --request GET 'http://localhost:8081/course/getCoursesWithoutStudents'
 
-##To get courses by student
+## To get courses by student
 curl --location --request GET 'http://localhost:8081/course/getCoursesByStudent?courseId=1'
 
-##To CRUD Students
+## To CRUD Students
 ### Delete
 curl --location --request DELETE 'http://localhost:8081/student/3' \
 --data-raw ''
