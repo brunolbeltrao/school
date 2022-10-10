@@ -40,10 +40,23 @@ curl --location --request PUT 'http://localhost:8081/student/' \
     "name":"test Bruno"
 }'
 
-##To CRUD Courses
-
-
-
-
-
-
+## To CRUD Courses
+### Insert
+curl --location --request POST 'http://localhost:8081/course/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name":"test"
+}'
+### UPDATE
+curl --location --request PUT 'http://localhost:8081/course/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id":1,
+    "name":"test"
+}'
+### Delete
+curl --location --request DELETE 'http://localhost:8081/course/5' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name":"test"
+}'
