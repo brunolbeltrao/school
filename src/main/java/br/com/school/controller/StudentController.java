@@ -1,0 +1,45 @@
+package br.com.school.controller;
+
+import br.com.school.controller.dto.StudentDTO;
+import br.com.school.hexagono.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+
+@Slf4j
+@RestController
+@RequestMapping(value = "/student")
+public class StudentController {
+    @Autowired
+    StudentService studentService;
+
+    @PostMapping
+    public ResponseEntity <StudentDTO> create(@RequestBody StudentDTO vo){
+        return new ResponseEntity<>(studentService.save(vo), HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity <StudentDTO> update(@RequestBody StudentDTO vo) {
+        StudentDTO studentDTO = studentService.save(vo);
+        return new ResponseEntity<>(studentDTO, HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        studentService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("getStudentsByCourse")
+    public ResponseEntity<StudentDTO>  findStudentsByCourse(@RequestParam() Long courseId){
+        return new ResponseEntity(studentService.findStudentsByCourse(courseId), HttpStatus.OK);
+    }
+
+    @GetMapping("getStudentsWithoutCourse")
+    public ResponseEntity<StudentDTO>  findStudentsWithoutCourse(){
+        return new ResponseEntity(studentService.StudentsWithoutCourse(), HttpStatus.OK);
+    }
+}
