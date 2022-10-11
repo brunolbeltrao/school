@@ -25,6 +25,13 @@ curl --location --request GET 'http://localhost:8081/course/getCoursesByStudent?
 curl --location --request DELETE 'http://localhost:8081/student/3' \
 --data-raw ''
 
+## To get all
+### Students
+curl --location --request GET 'http://localhost:8081/student/getStudents'
+
+### Course
+curl --location --request GET 'http://localhost:8081/course/getCourses'
+
 ### Insert
 curl --location --request POST 'http://localhost:8081/student/' \
 --header 'Content-Type: application/json' \
