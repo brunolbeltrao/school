@@ -69,4 +69,17 @@ public class CourseService {
         });
         return courseDTOs;
     }
+
+    public List<CourseDTO> Courses() {
+        List<CourseDTO> courseDTOs = new ArrayList<>();
+        List<Course> courses = courseRepositoryAdapter.findCourses();
+
+        courses.stream().forEach(course -> {
+            courseDTOs.add(CourseDTO.builder()
+                    .id(course.getId())
+                    .name(course.getName())
+                    .build());
+        });
+        return courseDTOs;
+    }
 }

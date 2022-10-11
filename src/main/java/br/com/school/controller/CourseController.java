@@ -49,5 +49,10 @@ public class CourseController {
         return new ResponseEntity(courseService.CoursesWithoutStudents(), HttpStatus.OK);
     }
 
+    @GetMapping("getCourses")
+    public ResponseEntity<CourseDTO>  findCourses(){
+        return new ResponseEntity(courseService.Courses(), HttpStatus.OK);
+    }
+
 
 }

@@ -7,9 +7,7 @@ import br.com.school.hexagono.domain.Student;
 import br.com.school.repository.*;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class CourseRepositoryAdapter implements CourseRepository {
@@ -74,7 +72,7 @@ public class CourseRepositoryAdapter implements CourseRepository {
         return courseEntitys;
     }
 
-    private Set<Course> buildListCourse(Set<CourseEntity> courseEntitys) {
+    private Set<Course> buildSetCourse(Set<CourseEntity> courseEntitys) {
         Set<Course> courses =  new HashSet<>();
 
         courseEntitys.stream().forEach(courseEntity -> {
@@ -85,7 +83,16 @@ public class CourseRepositoryAdapter implements CourseRepository {
         return courses;
     }
 
+    private List<Course> buildListCourse(List<CourseEntity> courseEntitys) {
+        List<Course> courses =  new ArrayList<>();
 
+        courseEntitys.stream().forEach(courseEntity -> {
+            Course course = new Course(courseEntity.getId(),courseEntity.getName());
+            courses.add(course);
+        });
+
+        return courses;
+    }
 
     @Override
     public Course findById(Long id) {
@@ -117,7 +124,11 @@ public class CourseRepositoryAdapter implements CourseRepository {
     }
 
     public Set<Course> findCoursesWithoutStudents() {
-        return buildListCourse(courseRepositoryJpa.findCoursesWithoutStudents());
+        return buildSetCourse(courseRepositoryJpa.findCoursesWithoutStudents());
+    }
+
+    public List<Course> findCourses() {
+        return buildListCourse(courseRepositoryJpa.findAll());
     }
 }
 

@@ -1,5 +1,6 @@
 package br.com.school.hexagono.service;
 
+import br.com.school.controller.dto.CourseDTO;
 import br.com.school.controller.dto.StudentDTO;
 import br.com.school.hexagono.adapter.CourseRepositoryAdapter;
 import br.com.school.hexagono.adapter.StudentRepositoryAdapter;
@@ -50,6 +51,19 @@ public class StudentService {
     public List<StudentDTO> StudentsWithoutCourse() {
         List<StudentDTO> studentDTOs = new ArrayList<>();
         Set<Student> students = studentRepositoryAdapter.findStudentsWithoutCourse();
+
+        students.stream().forEach(student -> {
+            studentDTOs.add(StudentDTO.builder()
+                    .id(student.getId())
+                    .name(student.getName())
+                    .build());
+        });
+        return studentDTOs;
+    }
+
+    public List<StudentDTO> findStudents() {
+        List<StudentDTO> studentDTOs = new ArrayList<>();
+        List<Student> students = studentRepositoryAdapter.findStudents();
 
         students.stream().forEach(student -> {
             studentDTOs.add(StudentDTO.builder()

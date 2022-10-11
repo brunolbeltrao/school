@@ -42,4 +42,9 @@ public class StudentController {
     public ResponseEntity<StudentDTO>  findStudentsWithoutCourse(){
         return new ResponseEntity(studentService.StudentsWithoutCourse(), HttpStatus.OK);
     }
+
+    @GetMapping("getStudents")
+    public ResponseEntity<StudentDTO>  findStudents(){
+        return new ResponseEntity(studentService.findStudents(), HttpStatus.OK);
+    }
 }

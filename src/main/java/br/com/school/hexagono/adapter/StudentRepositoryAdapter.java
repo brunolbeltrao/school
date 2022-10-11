@@ -9,10 +9,7 @@ import br.com.school.repository.StudentRepositoryJpa;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class StudentRepositoryAdapter implements StudentRepository {
@@ -61,8 +58,19 @@ public class StudentRepositoryAdapter implements StudentRepository {
         return courses;
     }
 
-    private Set<Student> buildListStudents(Set<StudentEntity> studentEntitys) {
+    private Set<Student> buildSetStudents(Set<StudentEntity> studentEntitys) {
         Set<Student> students =  new HashSet<>();
+
+        studentEntitys.stream().forEach(studentEntity -> {
+            Student student = new Student(studentEntity.getId(),studentEntity.getName());
+            students.add(student);
+        });
+
+        return students;
+    }
+
+    private List<Student> buildListStudents(List<StudentEntity> studentEntitys) {
+        List<Student> students =  new ArrayList<>();
 
         studentEntitys.stream().forEach(studentEntity -> {
             Student student = new Student(studentEntity.getId(),studentEntity.getName());
@@ -80,6 +88,10 @@ public class StudentRepositoryAdapter implements StudentRepository {
     }
 
     public Set<Student> findStudentsWithoutCourse() {
-        return buildListStudents(studentRepositoryJpa.findStudentsWithoutCourse());
+        return buildSetStudents(studentRepositoryJpa.findStudentsWithoutCourse());
+    }
+
+    public List<Student> findStudents() {
+        return buildListStudents(studentRepositoryJpa.findAll());
     }
 }
