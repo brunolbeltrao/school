@@ -20,6 +20,12 @@ curl --location --request GET 'http://localhost:8081/course/getCoursesWithoutStu
 ## To get courses by student
 curl --location --request GET 'http://localhost:8081/course/getCoursesByStudent?courseId=1'
 
+## To get all
+### Students
+curl --location --request GET 'http://localhost:8081/student/getStudents'
+### Course
+curl --location --request GET 'http://localhost:8081/course/getCourses'
+
 ## To CRUD Students
 ### Delete
 curl --location --request DELETE 'http://localhost:8081/student/3' \
