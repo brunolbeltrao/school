@@ -1,4 +1,4 @@
-# school
+# School - Hexagonal API
 School API - This is a simple backend aplication using two entities: course and students. There are some API like CRUD and get information.
 
 Port to test 8081
