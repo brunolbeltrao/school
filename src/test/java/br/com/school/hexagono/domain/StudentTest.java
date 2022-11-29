@@ -3,12 +3,20 @@ package br.com.school.hexagono.domain;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentTest {
+
+    public static List<Integer> sort(List<Integer> arr){
+
+        return arr.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+    }
 
     @Test
     void validEnrollFalse() {
