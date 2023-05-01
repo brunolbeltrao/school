@@ -1,19 +1,18 @@
 package br.com.school.repository;
 
 
-import br.com.school.hexagono.domain.Course;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@Table(name="course")
 public class CourseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 

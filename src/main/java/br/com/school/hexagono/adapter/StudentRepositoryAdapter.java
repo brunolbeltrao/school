@@ -83,8 +83,7 @@ public class StudentRepositoryAdapter implements StudentRepository {
 
     public Student findStudentById(Long id) {
         StudentEntity studentEntity = studentRepositoryJpa.findById(id).get();
-        Student student = build(studentEntity);
-        return student;
+        return build(studentEntity);
     }
 
     public Set<Student> findStudentsWithoutCourse() {
@@ -93,5 +92,10 @@ public class StudentRepositoryAdapter implements StudentRepository {
 
     public List<Student> findStudents() {
         return buildListStudents(studentRepositoryJpa.findAll());
+    }
+
+    public Student findStudentByName(String name) {
+        StudentEntity studentEntity = studentRepositoryJpa.findStudentByName(name);
+        return build(studentEntity);
     }
 }

@@ -1,27 +1,24 @@
 package br.com.school;
 
-import br.com.school.hexagono.adapter.CourseRepositoryAdapter;
-import br.com.school.hexagono.adapter.StudentRepositoryAdapter;
-import br.com.school.hexagono.domain.Course;
-import br.com.school.hexagono.domain.Student;
+
 import br.com.school.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 
 @SpringBootApplication
-public class SchoolApplication implements CommandLineRunner {
+@EnableDiscoveryClient
+public class SchoolApplication  implements CommandLineRunner  {
 
     @Autowired
     private CourseRepositoryJpa courseRepositoryJpa;
     @Autowired
     private StudentRepositoryJpa studentRepositoryJpa;
-
     @Override
     public void run(String... args) throws Exception {
 
@@ -56,5 +53,6 @@ public class SchoolApplication implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SchoolApplication.class, args);}
+        SpringApplication.run(SchoolApplication.class, args);
+    }
 }

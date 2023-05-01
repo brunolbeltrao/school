@@ -15,13 +15,9 @@ public class StudentDTO {
     private String name;
 
     public static StudentDTO build(Student student) {
-        StudentDTO dto =new StudentDTO();
-
-        dto.builder()
+        return  StudentDTO.builder()
                 .id(student.getId())
                 .name(student.getName())
                 .build();
-
-        return dto;
     }
 }

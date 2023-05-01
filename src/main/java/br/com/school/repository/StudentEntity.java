@@ -5,7 +5,7 @@ import br.com.school.hexagono.domain.Student;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -44,12 +44,4 @@ public class StudentEntity implements Serializable {
         this.name = name;
         this.courses = courses;
     }
-
-   /* public static StudentEntity build(Student student){
-        StudentEntity studentEntity = new StudentEntity();
-        studentEntity.setId(student.getId());
-        studentEntity.setName(student.getName());
-
-        return studentEntity;
-    }*/
 }

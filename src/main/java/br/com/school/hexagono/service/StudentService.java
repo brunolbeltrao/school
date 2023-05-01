@@ -73,4 +73,10 @@ public class StudentService {
         });
         return studentDTOs;
     }
+
+    public StudentDTO findStudentByName(String name) {
+        Student student = studentRepositoryAdapter.findStudentByName(name);
+        StudentDTO studentDTO = new StudentDTO().build(student);
+        return studentDTO;
+    }
 }
