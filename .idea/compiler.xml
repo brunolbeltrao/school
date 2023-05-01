@@ -7,13 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="school-service-discovery" />
-        <module name="school-main-school" />
         <module name="school-uncle-food" />
+        <module name="school-api-gateway" />
+        <module name="school-main-school" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="school-api-gateway" options="-parameters" />
       <module name="school-main-school" options="-parameters" />
       <module name="school-service-discovery" options="-parameters" />
       <module name="school-uncle-food" options="-parameters" />
